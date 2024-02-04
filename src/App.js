@@ -1,26 +1,40 @@
-
+import React from 'react';
 import './App.css';
+import { Login } from './components/Login';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Register } from './components/Register';
+import { Home } from './components/Home';
+
 
 function App() {
   return (
-    <main className="form-signin">
-  <form>
-    <h1 className="h3 mb-3 fw-normal">Welcome to Materio!</h1>
+  	<BrowserRouter>
 
-    <div className="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-      <label for="floatingInput">Email address</label>
+
+<header className="p-3 bg-dark text-white">
+    <div className="container">
+      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><Link to="/" className="nav-link px-2 text-white">Home</Link></li>
+        </ul>
+
+        <div className="text-end">
+          <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
+          <Link to="/register" className="btn btn-outline-light me-2">Register</Link>
+        </div>
+      </div>
     </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-      <label for="floatingPassword">Password</label>
-    </div>
-                                  
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-   
-  </form>
-</main>
-  );
+  </header>
+
+
+      <Routes>
+       <Route path="/" element={<Home/>}/>
+       <Route path="/login" element={<Login/>}/>
+       <Route path="/register" element={<Register/>}/>
+      </Routes>
+    </BrowserRouter>
+)
 }
 
 export default App;
